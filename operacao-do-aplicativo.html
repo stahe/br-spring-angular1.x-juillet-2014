@@ -1,0 +1,1046 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Um exemplo de configuração cliente/servidor - AngularJS 1.x / Spring 4">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/br-spring-angular1.x-juillet-2014/operacao-do-aplicativo.html">
+      
+      
+        <link rel="prev" href="o-cliente-angular-js.html">
+      
+      
+        <link rel="next" href="conclusao.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>4. Operação do aplicativo - Um exemplo de configuração cliente/servidor - AngularJS 1.x / Spring 4</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Um exemplo de configuração cliente/servidor - AngularJS 1.x / Spring 4";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4-operacao-do-aplicativo" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Um exemplo de configuração cliente/servidor - AngularJS 1.x / Spring 4" class="md-header__button md-logo" aria-label="Um exemplo de configuração cliente/servidor - AngularJS 1.x / Spring 4" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Um exemplo de configuração cliente/servidor - AngularJS 1.x / Spring 4
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4. Operação do aplicativo
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Alternar para o modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Alternar para o modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Alternar para o modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Alternar para o modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/br-spring-angular1.x-juillet-2014" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Um exemplo de configuração cliente/servidor - AngularJS 1.x / Spring 4" class="md-nav__button md-logo" aria-label="Um exemplo de configuração cliente/servidor - AngularJS 1.x / Spring 4" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Um exemplo de configuração cliente/servidor - AngularJS 1.x / Spring 4
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/br-spring-angular1.x-juillet-2014" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bem-vindos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introducao.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introdução
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o-servidor-spring-4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. O servidor Spring 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o-cliente-angular-js.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. O cliente Angular JS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Operação do aplicativo
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="operacao-do-aplicativo.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Operação do aplicativo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41-implantacao-do-servico-web-em-um-servidor-tomcat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Implantação do serviço web em um servidor Tomcat
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-implantacao-do-cliente-angular-no-servidor-tomcat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Implantação do cliente Angular no servidor Tomcat
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-os-cabecalhos-cors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Os cabeçalhos CORS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-implantacao-do-cliente-angular-em-um-tablet-android" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4. Implantação do cliente Angular em um tablet Android
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-implantacao-do-cliente-angular-no-emulador-de-um-smartphone-android" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5. Implantação do cliente Angular no emulador de um smartphone Android
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusao.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Conclusão
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="anexos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Anexos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><span id="refheading112468271450484" name="refheading112468271450484" class="odt-bookmark-anchor"></span></p>
+<h1 id="4-operacao-do-aplicativo">4. <span style="color: #365f91">Operação do aplicativo</span></h1>
+<p>Agora, queremos operar a aplicação fora dos controladores IDE e STS (para o servidor) e do Webstorm (para o cliente).</p>
+<p><span id="refheading112470271450484" name="refheading112470271450484" class="odt-bookmark-anchor"></span></p>
+<h2 id="41-implantacao-do-servico-web-em-um-servidor-tomcat">4.1. <span style="color: #4f81bd"><strong>Implantação do serviço web em um servidor Tomcat</strong></span></h2>
+<p>Vimos no parágrafo<a href="o-servidor-spring-4.html#refheading570371429907001"><u><span style="color: #0563c1"> 2.11.9</span></u></a> como criar um arquivo WAR para o Tomcat. Repetimos a operação aqui. Primeiramente, para preservar o que já existe, duplicamos o projeto Eclipse [rdvmedecins-webapi-v3] em [rdvmedecins-webapi-v4].</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000F6000000A1154D1075.png" width="172" height="113" style="display:inline-block; margin:4px;width:4.56cm;height:2.979cm;" class="odt-zoomable" data-zoom-src="images/10000000000000F6000000A1154D1075.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>O arquivo [pom.xml] é modificado da seguinte forma:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-xml">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">modelVersion</span><span style="color:#008080">&gt;</span><span style="color:#000000">4.0.0</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">modelVersion</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">groupId</span><span style="color:#008080">&gt;</span><span style="color:#000000">istia.st.spring4.mvc</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">groupId</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">artifactId</span><span style="color:#008080">&gt;</span><span style="color:#000000">rdvmedecins-webapi-v4</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">artifactId</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">version</span><span style="color:#008080">&gt;</span><span style="color:#000000">0.0.1-SNAPSHOT</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">version</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">packaging</span><span style="color:#008080">&gt;</span><span style="color:#000000">war</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">packaging</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">name</span><span style="color:#008080">&gt;</span><span style="color:#000000">rdvmedecins-webapi-v3</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">name</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">description</span><span style="color:#008080">&gt;</span><span style="color:#000000">Gestion de RV Médecins</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">description</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">parent</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">groupId</span><span style="color:#008080">&gt;</span><span style="color:#000000">org.springframework.boot</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">groupId</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">artifactId</span><span style="color:#008080">&gt;</span><span style="color:#000000">spring-boot-starter-parent</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">artifactId</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">version</span><span style="color:#008080">&gt;</span><span style="color:#000000">1.0.0.RELEASE</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">version</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">parent</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">dependencies</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">dependency</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">groupId</span><span style="color:#008080">&gt;</span><span style="color:#000000">org.springframework.boot</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">groupId</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">artifactId</span><span style="color:#008080">&gt;</span><span style="color:#000000">spring-boot-starter-web</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">artifactId</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">dependency</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">dependency</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">groupId</span><span style="color:#008080">&gt;</span><span style="color:#000000">org.springframework.boot</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">groupId</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">artifactId</span><span style="color:#008080">&gt;</span><span style="color:#000000">spring-boot-starter-security</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">artifactId</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">dependency</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">dependency</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">groupId</span><span style="color:#008080">&gt;</span><span style="color:#000000">org.springframework.boot</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">groupId</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">artifactId</span><span style="color:#008080">&gt;</span><span style="color:#000000">spring-boot-starter-tomcat</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">artifactId</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">scope</span><span style="color:#008080">&gt;</span><span style="color:#000000">provided</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">scope</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">dependency</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">dependency</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">groupId</span><span style="color:#008080">&gt;</span><span style="color:#000000">istia.st.spring4.rdvmedecins</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">groupId</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">artifactId</span><span style="color:#008080">&gt;</span><span style="color:#000000">rdvmedecins-metier-dao-v2</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">artifactId</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">version</span><span style="color:#008080">&gt;</span><span style="color:#000000">0.0.1-SNAPSHOT</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">version</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">dependency</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">dependencies</span><span style="color:#008080">&gt;</span></span></span>
+</code></pre></div>
+
+<p>As alterações devem ser feitas em dois locais:</p>
+<ul>
+  <li>linha 5: é necessário indicar que será gerado um arquivo WAR (Web ARchive);
+  </li>
+  <li>linhas 23-27: é necessário adicionar uma dependência do artefato [spring-boot-starter-tomcat]. Esse artefato inclui todas as classes do Tomcat nas dependências do projeto;
+  </li>
+  <li>linha 26: esse artefato é o [provided], ou seja, os arquivos correspondentes não serão incluídos no WAR gerado. Na verdade, esses arquivos estarão no servidor Tomcat no qual a aplicação será executada;
+  </li>
+</ul>
+
+<p>Além disso, é necessário configurar a aplicação web. Na ausência do arquivo [web.xml], isso é feito com uma classe que herda de [SpringBootServletInitializer]:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000F400000094D667F11D.png" width="171" height="104" style="display:inline-block; margin:4px;width:4.521cm;height:2.739cm;" class="odt-zoomable" data-zoom-src="images/10000000000000F400000094D667F11D.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>A classe [ApplicationInitializer] é a seguinte:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> rdvmedecins.web.config;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> org.springframework.boot.builder.SpringApplicationBuilder;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> org.springframework.boot.context.web.SpringBootServletInitializer;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">class</span><span style="color:#000000"> ApplicationInitializer </span><span style="font-weight:bold;color:#7f0055">extends</span><span style="color:#000000"> SpringBootServletInitializer {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#646464">@Override</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">protected</span><span style="color:#000000"> SpringApplicationBuilder configure(SpringApplicationBuilder application) {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="font-weight:bold;color:#7f0055">return</span><span style="color:#000000"> application.sources(AppConfig.</span><span style="font-weight:bold;color:#7f0055">class</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
+</code></pre></div>
+
+<ul>
+  <li>linha 6: a classe [ApplicationInitializer] estende a classe [SpringBootServletInitializer];
+  </li>
+  <li>linha 8: o método [configure] é redefinido (linha 7);
+  </li>
+  <li>linha 9: é fornecida a classe [AppConfig], que configura o projeto;
+  </li>
+</ul>
+
+<p>Feito isso, pode ser necessário atualizar o projeto Maven (eu tive que fazer isso): [clic droit sur projet / Maven / Update project] ou [Alt-F5].</p>
+<p>Para executar o projeto, pode-se proceder da seguinte forma:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005750000017652375D89.png" width="680" height="182" style="display:inline-block; margin:4px;width:17.999cm;height:4.817cm;" class="odt-zoomable" data-zoom-src="images/10000000000005750000017652375D89.png" /></td></tr></table>
+
+<ul>
+  <li>no [1], execute o projeto em um dos servidores registrados no Eclipse;
+  </li>
+  <li>no [2], seleciona-se o [tc Server Developer], que está presente por padrão. Trata-se de uma variante do Tomcat;
+  </li>
+</ul>
+
+<p>Obtém-se o seguinte resultado:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000001F400000138F1D94013.png" width="350" height="218" style="display:inline-block; margin:4px;width:9.26cm;height:5.78cm;" class="odt-zoomable" data-zoom-src="images/10000000000001F400000138F1D94013.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Isso é normal. Vale lembrar que o serviço web não possui URL nem [/] em seus métodos. Ao tentar o URL e o [/getAllMedecins], obtém-se a seguinte resposta:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002620000015B5448B8AD.png" width="427" height="243" style="display:inline-block; margin:4px;width:11.299cm;height:6.421cm;" class="odt-zoomable" data-zoom-src="images/10000000000002620000015B5448B8AD.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Isso é normal. O serviço web está protegido.</p>
+<p>Agora vamos executar o cliente [rdvmedecins-angular-v2] no WebStorm:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000056E000000D7B5440FB6.png" width="680" height="105" style="display:inline-block; margin:4px;width:17.999cm;height:2.783cm;" class="odt-zoomable" data-zoom-src="images/100000000000056E000000D7B5440FB6.png" /></td></tr></table>
+
+<p>No [1], inserimos o URL do novo serviço web [http://localhost:8080/rdvmedecins-webapi-v4]. Obtemos o seguinte resultado:</p>
+<p><img src="images/10000000000004B4000002A9BA88E4D6.png" width="794" height="449" style="width:21.001cm;height:11.89cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000004B4000002A9BA88E4D6.png" /></p>
+<p>Para executar o aplicativo fora do IDE STS, existem várias soluções. Aqui está uma delas.</p>
+<p>Baixe uma versão do Tomcat [http://tomcat.apache.org/download-80.cgi] (julho de 2014):</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000500000001FFCB6B987D.png" width="640" height="256" style="display:inline-block; margin:4px;width:16.933cm;height:6.761cm;" class="odt-zoomable" data-zoom-src="images/1000000000000500000001FFCB6B987D.png" /></td></tr></table>
+
+<p>Escolha em [1] uma versão compactada e descompacte-a em [2]. Volte para STS:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005A7000001B552C53DAA.png" width="680" height="205" style="display:inline-block; margin:4px;width:17.999cm;height:5.435cm;" class="odt-zoomable" data-zoom-src="images/10000000000005A7000001B552C53DAA.png" /></td></tr></table>
+
+<ul>
+  <li>na aba [Servers], clica-se com o botão direito do mouse no aplicativo [rdvmedecins-webapi-v4] e seleciona-se a opção [Browse Deployment Location];
+  </li>
+  <li>no [4]: copie a pasta [rdvmedecins-webapi-v4];
+  </li>
+</ul>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000045E000001F122FC5F51.png" width="559" height="249" style="display:inline-block; margin:4px;width:14.79cm;height:6.576cm;" class="odt-zoomable" data-zoom-src="images/100000000000045E000001F122FC5F51.png" /></td></tr></table>
+
+<ul>
+  <li>no [5], cole a pasta [rdvmedecins-webapi-v4] na pasta [webapps] do Tomcat;
+  </li>
+  <li>em [6], execute o arquivo de comando [startup.bat] (o servidor Tomcat integrado ao STS deve estar desligado). Uma janela DOS é aberta para exibir os logs do Tomcat. Eles devem indicar que a aplicação [rdvmedecins-webapi-v4] foi iniciada.
+  </li>
+</ul>
+
+<p>Para verificar isso, execute novamente o cliente Angular [rdvmedecins-angular-v2] no WebStorm:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000573000000CDB4E412AB.png" width="680" height="100" style="display:inline-block; margin:4px;width:17.999cm;height:2.644cm;" class="odt-zoomable" data-zoom-src="images/1000000000000573000000CDB4E412AB.png" /></td></tr></table>
+
+<p>No [1], insere-se o URL do novo serviço web [http://localhost:8080/rdvmedecins-webapi-v4]. Obtém-se o seguinte resultado:</p>
+<p><img src="images/10000000000004B4000002A9BA88E4D6.png" width="794" height="449" style="width:21.001cm;height:11.89cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000004B4000002A9BA88E4D6.png" /></p>
+<p><span id="refheading112472271450484" name="refheading112472271450484" class="odt-bookmark-anchor"></span></p>
+<h2 id="42-implantacao-do-cliente-angular-no-servidor-tomcat">4.2. <span style="color: #4f81bd">Implantação do cliente Angular no servidor Tomcat</span></h2>
+<p>Agora que o serviço web foi implantado no Tomcat, vamos implantar o cliente Angular em um servidor também. Esse servidor pode muito bem ser o mesmo que já hospeda o serviço web. Vamos seguir esse caminho.</p>
+<p>Primeiramente, duplicamos o cliente [rdvmedecins-angular-v2] em [rdvmedecins-angular-v3] e fazemos as seguintes alterações:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003980000019CF396B9A2.png" width="460" height="206" style="display:inline-block; margin:4px;width:12.171cm;height:5.45cm;" class="odt-zoomable" data-zoom-src="images/10000000000003980000019CF396B9A2.png" /></td></tr></table>
+
+<ul>
+  <li>em [1], tudo foi movido para uma pasta [app] ;
+  </li>
+  <li>em [1], foi excluída a pasta [bower-components], que continha as diversas bibliotecas CSS e JS necessárias ao projeto. Todos esses elementos foram copiados para a pasta [lib] [2];
+  </li>
+  <li>no [1], o arquivo [app.html] foi renomeado para [index.html];
+  </li>
+</ul>
+
+<p>O arquivo [index.html] foi modificado para refletir as alterações nos caminhos dos recursos utilizados:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;!</span><span style="color:#3f7f7f">DOCTYPE</span> <span style="color:#008080">html&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">html</span> <span style="color:#7f007f">ng-app</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;rdvmedecins&quot;</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">head</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">title</span><span style="color:#008080">&gt;</span><span style="color:#000000">RdvMedecins</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">title</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">...</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#000000">&lt;!-- o CSS --&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#008080">...</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">link</span> <span style="color:#7f007f">href</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;lib/bootstrap-theme.min.css&quot;</span> <span style="color:#7f007f">rel</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;stylesheet&quot;</span><span style="color:#008080">/&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">link</span> <span style="color:#7f007f">href</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;lib/bootstrap-select.min.css&quot;</span> <span style="color:#7f007f">rel</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;stylesheet&quot;</span><span style="color:#008080">/&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">head</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&lt;!-- controlador [appCtrl], modelo [app] --&gt;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">body</span> <span style="color:#7f007f">ng-controller</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;appCtrl&quot;</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">div</span> <span style="color:#7f007f">class</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;container&quot;</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#008080">...</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">div</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&lt;!-- Núcleo do Bootstrap JavaScript ================================================== --&gt;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">script</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/javascript&quot;</span> <span style="color:#7f007f">src</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;lib/jquery.min.js&quot;</span><span style="color:#008080">&gt;&lt;/</span><span style="color:#3f7f7f">script</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">script</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/javascript&quot;</span> <span style="color:#7f007f">src</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;lib/bootstrap.min.js&quot;</span><span style="color:#008080">&gt;&lt;/</span><span style="color:#3f7f7f">script</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">script</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/javascript&quot;</span> <span style="color:#7f007f">src</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;lib/bootstrap-select.min.js&quot;</span><span style="color:#008080">&gt;&lt;/</span><span style="color:#3f7f7f">script</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">script</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/javascript&quot;</span> <span style="color:#7f007f">src</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;lib/footable.js&quot;</span><span style="color:#008080">&gt;&lt;/</span><span style="color:#3f7f7f">script</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&lt;!-- AngularJS --&gt;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">script</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/javascript&quot;</span> <span style="color:#7f007f">src</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;lib/angular.min.js&quot;</span><span style="color:#008080">&gt;&lt;/</span><span style="color:#3f7f7f">script</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">script</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/javascript&quot;</span> <span style="color:#7f007f">src</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;lib/ui-bootstrap-tpls.min.js&quot;</span><span style="color:#008080">&gt;&lt;/</span><span style="color:#3f7f7f">script</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">script</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/javascript&quot;</span> <span style="color:#7f007f">src</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;lib/angular-route.min.js&quot;</span><span style="color:#008080">&gt;&lt;/</span><span style="color:#3f7f7f">script</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">script</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/javascript&quot;</span> <span style="color:#7f007f">src</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;lib/angular-translate.min.js&quot;</span><span style="color:#008080">&gt;&lt;/</span><span style="color:#3f7f7f">script</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">script</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/javascript&quot;</span> <span style="color:#7f007f">src</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;lib/angular-base64.min.js&quot;</span><span style="color:#008080">&gt;&lt;/</span><span style="color:#3f7f7f">script</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&lt;!-- módulos --&gt;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">...</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&lt;!-- serviços --&gt;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">...</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&lt;!-- diretivas --&gt;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">...</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&lt;!-- controladores --&gt;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">....</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">body</span><span style="color:#008080">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">html</span><span style="color:#008080">&gt;</span></span></span>
+</code></pre></div>
+
+<p>Além disso, o controlador [loginCtrl] foi modificado para apontar para o servidor correto, a fim de evitar que o usuário precise digitar seu URL:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">// credenciais</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">app.serverUrl = </span><span style="color:#2a00ff">&quot;http://localhost:8080/rdvmedecins-webapi-v4&quot;</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">app.username = </span><span style="color:#2a00ff">&quot;admin&quot;</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">app.password = </span><span style="color:#2a00ff">&quot;admin&quot;</span><span style="color:#000000">;</span></span></span>
+</code></pre></div>
+
+<p>Feito isso, vamos executar o arquivo [index.html]:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000F900000184DBAA64E0.png" width="174" height="271" style="display:inline-block; margin:4px;width:4.611cm;height:7.181cm;" class="odt-zoomable" data-zoom-src="images/10000000000000F900000184DBAA64E0.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000DE0000006C4B136E18.png" width="155" height="76" style="display:inline-block; margin:4px;width:4.11cm;height:2cm;" class="odt-zoomable" data-zoom-src="images/10000000000000DE0000006C4B136E18.png" /></td></tr></table>
+
+<p>Em seguida, vamos nos conectar ao serviço web. Deve funcionar. Depois de verificar isso, vamos desligar o servidor Tomcat. Vamos reutilizar o servidor integrado do STS.</p>
+<p>No STS, vamos copiar todo o conteúdo da pasta [rdvmedecins-angular-v3/app] para a pasta [webapp] do projeto [rdvmedecins-webapi-v4] (guia <em>Navigator</em>) [1]:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000038F000002644A182322.png" width="456" height="306" style="display:inline-block; margin:4px;width:12.053cm;height:8.096cm;" class="odt-zoomable" data-zoom-src="images/100000000000038F000002644A182322.png" /></td></tr></table>
+
+<p>Feito isso, vamos iniciar o [2], o servidor VMware do STS e, em seguida, solicitar o URL [http://localhost:8080/rdvmedecins-webapi-v4/app/index.html]:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000034D000002C10CB0CB6F.png" width="423" height="353" style="display:inline-block; margin:4px;width:11.18cm;height:9.327cm;" class="odt-zoomable" data-zoom-src="images/100000000000034D000002C10CB0CB6F.png" /></td></tr></table>
+
+<p>Temos um problema de permissões no [3]. Isso não é surpreendente, pois protegemos o serviço web. Precisamos declarar que o acesso ao arquivo [/app/index.html] é livre. Voltemos ao Eclipse:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000F4000000CD22F5BACE.png" width="171" height="144" style="display:inline-block; margin:4px;width:4.521cm;height:3.799cm;" class="odt-zoomable" data-zoom-src="images/10000000000000F4000000CD22F5BACE.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Lembramos que os direitos de acesso foram definidos na classe [SecurityConfig]. Vamos modificá-la da seguinte maneira:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#646464">@Override</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">protected</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> configure(HttpSecurity http) </span><span style="font-weight:bold;color:#7f0055">throws</span><span style="color:#000000"> Exception {</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// CSRF</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        http.csrf().disable();</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// a senha é transmitida pelo cabeçalho Authorization: Basic xxxx</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        http.httpBasic();</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// o método HTTP OPTIONS deve ser autorizado para todos</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        http.authorizeRequests() </span><span style="color:#3f7f5f">//</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                .antMatchers(HttpMethod.</span><span style="font-style:italic;color:#0000c0">OPTIONS</span><span style="color:#000000">, </span><span style="color:#2a00ff">&quot;/&quot;</span><span style="color:#000000">, </span><span style="color:#2a00ff">&quot;/**&quot;</span><span style="color:#000000">).permitAll();</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// a pasta [app] está acessível a todos</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        http.authorizeRequests() </span><span style="color:#3f7f5f">//</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                .antMatchers(HttpMethod.</span><span style="font-style:italic;color:#0000c0">GET</span><span style="color:#000000">, </span><span style="color:#2a00ff">&quot;/app&quot;</span><span style="color:#000000">, </span><span style="color:#2a00ff">&quot;/app/**&quot;</span><span style="color:#000000">).permitAll();</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// somente a função ADMIN pode utilizar o aplicativo</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        http.authorizeRequests() </span><span style="color:#3f7f5f">//</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                .antMatchers(&quot;/&quot;, &quot;/**&quot;) // todos os URL</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                .hasRole(</span><span style="color:#2a00ff">&quot;ADMIN&quot;</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
+</code></pre></div>
+
+<ul>
+  <li>linhas 11-12: autorizamos todos a ler a pasta [app] e seu conteúdo. Para isso, nos baseamos nas linhas anteriores.
+  </li>
+</ul>
+
+<p>Agora, reiniciemos o servidor Tomcat de STS e, em seguida, solicitemos novamente o URL e o [http://localhost:8080/rdvmedecins-webapi-v4/app/index.html]:</p>
+<p><img src="images/100000000000060700000238D88F7EC9.png" width="670" height="247" style="width:17.729cm;height:6.525cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000060700000238D88F7EC9.png" /></p>
+<p>Desta vez, deu certo.</p>
+<p><span id="refheading112474271450484" name="refheading112474271450484" class="odt-bookmark-anchor"></span></p>
+<h2 id="43-os-cabecalhos-cors">4.3. <span style="color: #4f81bd">Os cabeçalhos CORS</span></h2>
+<p>Talvez você se lembre de que tivemos bastante dificuldade para lidar com os cabeçalhos CORS. No exemplo anterior:</p>
+<ul>
+  <li>o serviço web está em URL [http://localhost:8080/rdvmedecins-webapi-v4];
+  </li>
+  <li>o cliente HTML está no URL [http://localhost:8080/rdvmedecins-webapi-v4/app];
+  </li>
+</ul>
+
+<p>O cliente HTML e o serviço web estão, portanto, no mesmo servidor [http://localhost:8080]. Não há, portanto, conflitos CORS, pois estes só ocorrem quando o cliente e o servidor não estão no mesmo domínio. Deveríamos poder verificar isso. Voltamos ao STS:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000EA000000C709556DD7.png" width="164" height="139" style="display:inline-block; margin:4px;width:4.33cm;height:3.679cm;" class="odt-zoomable" data-zoom-src="images/10000000000000EA000000C709556DD7.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>A geração ou não dos cabeçalhos CORS é controlada por um valor booleano definido na classe [ApplicationModel]:</p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// dados de configuração</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">boolean</span><span style="color:#000000"> </span><span style="color:#0000c0">CORSneeded</span><span style="color:#000000"> = </span><span style="font-weight:bold;color:#7f0055">true</span><span style="color:#000000">;</span></span></span>
+</code></pre></div>
+
+<p>Definimos a variável booleana acima como <strong>false</strong>, reiniciamos o serviço web e solicitamos novamente o URL [http://localhost:8080/rdvmedecins-webapi-v4/app/index.html]. Verificamos que o aplicativo está funcionando.</p>
+<p><span id="refheading112476271450484" name="refheading112476271450484" class="odt-bookmark-anchor"></span></p>
+<h2 id="44-implantacao-do-cliente-angular-em-um-tablet-android">4.4. <span style="color: #4f81bd">Implantação do cliente Angular em um tablet Android</span></h2>
+<p>A ferramenta [Phonegap] [http://phonegap.com/] permite gerar um executável para dispositivos móveis (Android, IoS, Windows 8, ...) a partir de um aplicativo HTML / JS / CSS. Existem diferentes maneiras de atingir esse objetivo. Utilizamos a mais simples: uma ferramenta disponível online no site do Phonegap [http://build.phonegap.com/apps].</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000508000001E0E493FB62.png" width="644" height="240" style="display:inline-block; margin:4px;width:17.039cm;height:6.35cm;" class="odt-zoomable" data-zoom-src="images/1000000000000508000001E0E493FB62.png" /></td></tr></table>
+
+<ul>
+  <li>antes de [1], talvez seja necessário criar uma conta;
+  </li>
+  <li>em [1], começamos;
+  </li>
+  <li>em [2], escolhe-se um plano gratuito que permite apenas um aplicativo Phonegap;
+  </li>
+</ul>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000053700000104D2C8C565.png" width="668" height="130" style="display:inline-block; margin:4px;width:17.662cm;height:3.44cm;" class="odt-zoomable" data-zoom-src="images/100000000000053700000104D2C8C565.png" /></td></tr></table>
+
+<ul>
+  <li>em [3], baixe o aplicativo compactado [4] (a pasta [app] criada no parágrafo<a href="#creation-app"><u><span style="color: #0563c1"> 4.2</span></u></a> está compactada);
+  </li>
+</ul>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000058E000001A8102589EA.png" width="680" height="203" style="display:inline-block; margin:4px;width:17.999cm;height:5.366cm;" class="odt-zoomable" data-zoom-src="images/100000000000058E000001A8102589EA.png" /></td></tr></table>
+
+<ul>
+  <li>em [5], atribua um nome ao aplicativo;
+  </li>
+  <li>no [6], ela é compilada. Essa operação pode levar 1 minuto. Aguarde até que os ícones das diferentes plataformas móveis indiquem que a compilação foi concluída;
+  </li>
+</ul>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000036D000001AB246FEA43.png" width="439" height="214" style="display:inline-block; margin:4px;width:11.603cm;height:5.65cm;" class="odt-zoomable" data-zoom-src="images/100000000000036D000001AB246FEA43.png" /></td></tr></table>
+
+<ul>
+  <li>apenas os binários do Android ([7]) e do Windows ([8]) foram gerados;
+  </li>
+  <li>clique em [7] para baixar o binário do Android;
+  </li>
+</ul>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000016D000000C8628D9981.png" width="183" height="100" style="display:inline-block; margin:4px;width:4.83cm;height:2.646cm;" class="odt-zoomable" data-zoom-src="images/100000000000016D000000C8628D9981.png" /></td></tr></table>
+
+<ul>
+  <li>em [9], o binário [apk] baixado;
+  </li>
+</ul>
+
+<p>Inicie um emulador [GenyMotion] para um tablet Android (consulte o parágrafo<a href="anexos.html#refheading454551405398942"><u><span style="color: #0563c1"> 6.4</span></u></a>):</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000017900000131A1D5D594.png" width="264" height="214" style="display:inline-block; margin:4px;width:6.98cm;height:5.65cm;" class="odt-zoomable" data-zoom-src="images/100000000000017900000131A1D5D594.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Acima, iniciamos um emulador de tablet com o API 16 do Android. Assim que o emulador for iniciado, </p>
+<ul>
+  <li>desbloqueie-o deslizando a trava (se houver) para o lado e soltando-a;
+  </li>
+  <li>com o mouse, arraste o arquivo [PGBuildApp-debug.apk] que você baixou e solte-o no emulador. Ele será então instalado e executado;
+  </li>
+</ul>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005CB00000287923DA7F0.png" width="680" height="297" style="display:inline-block; margin:4px;width:17.999cm;height:7.853cm;" class="odt-zoomable" data-zoom-src="images/10000000000005CB00000287923DA7F0.png" /></td></tr></table>
+
+<p>É preciso alterar o URL para [1]. Para isso, em uma janela de comando, digite o comando [ipconfig] (linha 1 abaixo), que exibirá os diferentes endereços IP do seu computador:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Users\Serge Tahé&gt;<span style="color:#ff3333">ipconfig</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Configuration IP de Windows</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Carte réseau sans fil Connexion au réseau local* 15 :</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">   Statut du média. . . . . . . . . . . . : Média déconnecté</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">   Suffixe DNS propre à la connexion. . . :</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Carte Ethernet Connexion au réseau local :</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">   Suffixe DNS propre à la connexion. . . : ad.univ-angers.fr</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">   Adresse IPv6 de liaison locale. . . . .: fe80::698b:455a:925:6b13%4</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">   Adresse IPv4. . . . . . . . . . . . . .: <span style="color:#ff3333">172.19.81.34</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">   Masque de sous-réseau. . . . . . . . . : 255.255.0.0</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">   Passerelle par défaut. . . . . . . . . : 172.19.0.254</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Carte réseau sans fil Wi-Fi :</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">   Statut du média. . . . . . . . . . . . : Média déconnecté</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">   Suffixe DNS propre à la connexion. . . :</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">...</span></span>
+</code></pre></div>
+
+<p>Anote o endereço Wi-Fi IP (linhas 6 a 9) ou o endereço na rede local IP (linhas 11 a 17). Em seguida, utilize esse endereço IP no URL do servidor web:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000296000000A328455688.png" width="463" height="114" style="display:inline-block; margin:4px;width:12.261cm;height:3.02cm;" class="odt-zoomable" data-zoom-src="images/1000000000000296000000A328455688.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Feito isso, conecte-se ao serviço web:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005F30000039471040E7F.png" width="794" height="476" style="display:inline-block; margin:4px;width:21.001cm;height:12.599cm;" class="odt-zoomable" data-zoom-src="images/10000000000005F30000039471040E7F.png" /></td></tr></table>
+
+<p>Teste o aplicativo no emulador. Ele deve funcionar. No lado do servidor, é possível autorizar ou não os cabeçalhos CORS na classe [ApplicationModel]: </p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000">// dados de configuração</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">boolean</span><span style="color:#000000"> </span><span style="color:#0000c0">CORSneeded</span><span style="color:#000000"> = </span><span style="font-weight:bold;color:#7f0055">false</span><span style="color:#000000">;</span></span></span>
+</code></pre></div>
+
+<p>Isso não faz diferença para o aplicativo Android. Ele não é executado em um navegador. A exigência dos cabeçalhos CORS vem do navegador e não do servidor.</p>
+<p><span id="refheading112968271450484" name="refheading112968271450484" class="odt-bookmark-anchor"></span></p>
+<h2 id="45-implantacao-do-cliente-angular-no-emulador-de-um-smartphone-android">4.5. <span style="color: #4f81bd">Implantação do cliente Angular no emulador de um smartphone Android</span></h2>
+<p>Repetimos a operação anterior com um emulador de smartphone. Queremos verificar como nosso cliente se comporta em telas pequenas:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000057E0000023E9AA273B1.png" width="680" height="278" style="display:inline-block; margin:4px;width:17.999cm;height:7.347cm;" class="odt-zoomable" data-zoom-src="images/100000000000057E0000023E9AA273B1.png" /></td></tr></table>
+
+<ul>
+  <li>em [1], iniciamos um emulador de smartphone;
+  </li>
+  <li>em [2] e [3], a barra de navegação foi recolhida em um menu;
+  </li>
+</ul>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000545000002E3F9851CE8.png" width="675" height="370" style="display:inline-block; margin:4px;width:17.847cm;height:9.777cm;" class="odt-zoomable" data-zoom-src="images/1000000000000545000002E3F9851CE8.png" /></td></tr></table>
+
+<ul>
+  <li>em [4], faz-se o login;
+  </li>
+  <li>em [5], a lista e o calendário estão um abaixo do outro, em vez de lado a lado;
+  </li>
+</ul>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000053400000203A1D37D3B.png" width="666" height="258" style="display:inline-block; margin:4px;width:17.621cm;height:6.814cm;" class="odt-zoomable" data-zoom-src="images/100000000000053400000203A1D37D3B.png" /></td></tr></table>
+
+<ul>
+  <li>em [6], solicita-se a agenda;
+  </li>
+  <li>em [7], como a tela é muito pequena, parte dos horários fica oculta. Foi a biblioteca [footable] que realizou esse trabalho;
+  </li>
+</ul>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002C3000001E6B549C8DC.png" width="354" height="243" style="display:inline-block; margin:4px;width:9.354cm;height:6.429cm;" class="odt-zoomable" data-zoom-src="images/10000000000002C3000001E6B549C8DC.png" /></td></tr></table>
+
+<ul>
+  <li>em [8], a mesma visualização de antes, mas desta vez com um compromisso.
+  </li>
+</ul>
+
+<p>No final das contas, nosso aplicativo se adapta bastante bem ao smartphone. Certamente poderia ser melhor, mas continua sendo utilizável.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Este tutorial, escrito por <strong>Serge Tahé</strong>, é disponibilizado ao público sob os termos da
+        <em>Creative Commons Atribuição – Sem uso comercial –
+        Compartilhamento igualitário 3.0 inalterado</em>.
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>

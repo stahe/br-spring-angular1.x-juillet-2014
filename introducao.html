@@ -1,0 +1,857 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Um exemplo de configuração cliente/servidor - AngularJS 1.x / Spring 4">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/br-spring-angular1.x-juillet-2014/introducao.html">
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+        <link rel="next" href="o-servidor-spring-4.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>1. Introdução - Um exemplo de configuração cliente/servidor - AngularJS 1.x / Spring 4</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Um exemplo de configuração cliente/servidor - AngularJS 1.x / Spring 4";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-introducao" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Um exemplo de configuração cliente/servidor - AngularJS 1.x / Spring 4" class="md-header__button md-logo" aria-label="Um exemplo de configuração cliente/servidor - AngularJS 1.x / Spring 4" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Um exemplo de configuração cliente/servidor - AngularJS 1.x / Spring 4
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Introdução
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Alternar para o modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Alternar para o modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Alternar para o modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Alternar para o modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/br-spring-angular1.x-juillet-2014" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Um exemplo de configuração cliente/servidor - AngularJS 1.x / Spring 4" class="md-nav__button md-logo" aria-label="Um exemplo de configuração cliente/servidor - AngularJS 1.x / Spring 4" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Um exemplo de configuração cliente/servidor - AngularJS 1.x / Spring 4
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/br-spring-angular1.x-juillet-2014" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bem-vindos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introdução
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="introducao.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introdução
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-a-arquitetura-da-aplicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. A arquitetura da aplicação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-as-ferramentas-utilizadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. As ferramentas utilizadas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-as-funcionalidades-do-aplicativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. As funcionalidades do aplicativo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3. As funcionalidades do aplicativo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-criacao-do-banco-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.1. Criação do banco de dados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-implementacao-do-servidor-web-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.2. Implementação do servidor web / JSON
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-implementacao-do-cliente-angular" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.3. Implementação do cliente Angular
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o-servidor-spring-4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. O servidor Spring 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o-cliente-angular-js.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. O cliente Angular JS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="operacao-do-aplicativo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Operação do aplicativo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusao.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Conclusão
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="anexos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Anexos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><span id="refheading1882601168461456" name="refheading1882601168461456" class="odt-bookmark-anchor"></span></p>
+<h1 id="1-introducao">1. <span style="color: #365f91">Introdução</span></h1>
+<p>O PDF do documento está disponível |<a href="https://1drv.ms/b/c/f53a919f43d27eb5/IQC4kxlmNY11RKzPGywyiYCzAbllsNb8wssEjHNnBEekBYg?e=adEY3t">AQUI</a>|.</p>
+<p>Os exemplos do documento estão disponíveis |<a href="https://1drv.ms/u/c/f53a919f43d27eb5/IQAj6GxmG6PETYZKRGkHmlOrAUHOZ-GVlbDnmJcaNHRoPxA?e=PWXKVM">AQUI</a>|.</p>
+<p>Propomos aqui apresentar dois frameworks por meio de um exemplo de cliente/servidor:</p>
+<ul>
+<li><strong>AngularJS,</strong> utilizado para o cliente. Para simplificar, será denominado <strong>Angular</strong> daqui em diante;</li>
+<li><strong>Spring 4,</strong> utilizado para o servidor. Para simplificar, será denominado <strong>Spring</strong> daqui em diante;</li>
+</ul>
+<p>A compreensão deste documento requer alguns pré-requisitos:</p>
+<ul>
+<li>um nível intermediário em Java EE;</li>
+<li>conhecimento de JPA (Java Persistence API), que será utilizado para acessar um banco de dados;</li>
+<li>conhecimento de pelo menos uma versão anterior do Spring para compreender a filosofia desse framework;</li>
+<li>o uso do Maven para configurar projetos em Java;</li>
+<li>conhecimento básico das trocas de dados em uma aplicação web;</li>
+<li>as tags comuns da linguagem HTML;</li>
+<li>conhecimento básico da linguagem JavaScript;</li>
+</ul>
+<p>Os demais conhecimentos necessários serão apresentados e explicados ao longo do estudo de caso.</p>
+<p><strong>Este documento não é um curso e está incompleto em muitos aspectos</strong>. Para aprofundar o conhecimento sobre as duas estruturas, pode-se utilizar as seguintes referências:</p>
+<ul>
+<li><strong>[ref1]</strong>: o livro <strong>“Pro</strong> AngularJS”, escrito por <strong>Adam Freeman e publicado</strong> pela editora <strong>Apress</strong>. É um excelente livro. Os códigos-fonte dos exemplos deste livro estão disponíveis gratuitamente no URL [http://www.apress.com/downloadable/download/sample/sample_id/1527/];</li>
+<li>[<strong>ref2</strong>]: a documentação oficial do Angular JS [https://docs.angularjs.org/guide]</li>
+<li><strong>[ref3]</strong>: o livro <strong>“Spring</strong> Data”, da editora O’Reilly, que apresenta o uso do framework para acessar dados, sejam eles de bancos de dados relacionais ou não;</li>
+<li>[<strong>ref4</strong>]: o livro “<strong>Pro Spring</strong> 3”, publicado pela editora <strong>Apress</strong>. Trata-se da versão anterior ao Spring 4, mas os principais conceitos já estão presentes;</li>
+<li>[<strong>ref5</strong>]: a documentação de referência do Spring 4 [http://docs.spring.io/spring/docs/current/spring-framework-reference/pdf/spring-framework-reference.pdf].</li>
+</ul>
+<p>As fontes que serviram de base para este documento são as citadas acima, além do indispensável [http://stackoverflow.com/] para as inúmeras sessões de depuração.</p>
+<p><span id="refheading99511454977699" name="refheading99511454977699" class="odt-bookmark-anchor"></span></p>
+<h2 id="11-a-arquitetura-da-aplicacao">1.1. <span style="color: #4f81bd"><strong>A arquitetura da aplicação</strong></span></h2>
+<p><span style="color: #000000">A aplicação em estudo terá a seguinte arquitetura:</span></p>
+<p><img src="images/1000000000000294000002EC2BFC7EC3.png" width="396" height="449" style="width:10.479cm;height:11.869cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000294000002EC2BFC7EC3.png" /></p>
+<ul>
+<li><span style="color: #000000">no [1], um servidor web fornece páginas estáticas a um navegador. Essas páginas contêm uma aplicação AngularJS construída com base no modelo MVC (Modelo – Visão – Controlador). O modelo, neste caso, é tanto o das visualizações quanto o do domínio, representado aqui pela camada [Services];</span></li>
+<li><span style="color: #000000">O usuário irá interagir com as visualizações apresentadas a ele no navegador. Suas ações, por vezes, exigirão uma consulta ao servidor Spring 4 [2]. Este processará a solicitação e retornará uma resposta JSON (JavaScript Object Notation) [3]. Essa resposta será usada para atualizar a visualização apresentada ao usuário.</span></li>
+</ul>
+<p><span id="refheading2334501890746156" name="refheading2334501890746156" class="odt-bookmark-anchor"></span></p>
+<h2 id="12-as-ferramentas-utilizadas">1.2. <span style="color: #4f81bd">As ferramentas utilizadas</span></h2>
+<p><span style="color: #000000">Neste documento, as ferramentas de desenvolvimento utilizadas são as seguintes:</span></p>
+<ul>
+<li><a href="http://spring.io/tools/sts"><u><span style="color: #0563c1">Spring Tool Suite</span></u></a><span style="color: #000000"> para o servidor Spring: disponível para download gratuito;</span></li>
+<li><a href="http://www.jetbrains.com/webstorm/download/"><u><span style="color: #0563c1">Webstorm</span></u></a><span style="color: #000000"> para o cliente Angular: uma versão de avaliação válida por um mês pode ser baixada gratuitamente;</span></li>
+<li><a href="http://www.wampserver.com/"><u><span style="color: #0563c1">Wampserver</span></u></a><span style="color: #000000"> para o gerenciamento do banco de dados MySQL 5: disponível para download gratuito;</span></li>
+</ul>
+<p><span style="color: #000000">A instalação dessas e de outras ferramentas está descrita no parágrafo</span><a href="anexos.html#refheading1633352067866943"><u><span style="color: #0563c1"> 6</span></u></a><span style="color: #000000">.</span></p>
+<p><span id="refheading569731429907001" name="refheading569731429907001" class="odt-bookmark-anchor"></span></p>
+<h2 id="13-as-funcionalidades-do-aplicativo">1.3. <span style="color: #4f81bd">As funcionalidades do aplicativo</span></h2>
+<p>O código do exemplo está disponível |ICI| na forma de um arquivo <em>zip</em> para download.</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000143000000C518B73801.png" width="226" height="138" style="display:inline-block; margin:4px;width:5.98cm;height:3.649cm;" class="odt-zoomable" data-zoom-src="images/1000000000000143000000C518B73801.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000C0000000698BA386CB.png" width="135" height="73" style="display:inline-block; margin:4px;width:3.56cm;height:1.94cm;" class="odt-zoomable" data-zoom-src="images/10000000000000C0000000698BA386CB.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">o servidor está contido nas pastas [rdvmedecins-metier-dao-v2] e [rdvmedecins-webapi-v3];</span></li>
+<li><span style="color: #000000">o cliente está contido na pasta [rdvmedecins-angular-v2];</span></li>
+<li><span style="color: #000000">o script SQL para geração do banco de dados MySQL5 está na pasta [database];</span></li>
+</ul>
+<p><span id="refheading569751429907001" name="refheading569751429907001" class="odt-bookmark-anchor"></span></p>
+<h3 id="131-criacao-do-banco-de-dados">1.3.1. <span style="color: #4f81bd">Criação do banco de dados</span></h3>
+<p><span style="color: #000000">Para testar o aplicativo, criamos primeiro o banco de dados com o script SQL [dbrdvmedecins.sql]. Utilizamos a ferramenta [PhpMyAdmin] de WampServer:</span></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000007C70000029FB2050FBF.png" width="680" height="229" style="display:inline-block; margin:4px;width:17.999cm;height:6.066cm;" class="odt-zoomable" data-zoom-src="images/10000000000007C70000029FB2050FBF.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">no [1], selecionamos a ferramenta [phpMyAdmin] do WampServer;</span></li>
+<li><span style="color: #000000">em [2], escolhe-se a opção [Importer];</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000069F000001FD91FB7BFE.png" width="680" height="204" style="display:inline-block; margin:4px;width:17.999cm;height:5.405cm;" class="odt-zoomable" data-zoom-src="images/100000000000069F000001FD91FB7BFE.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">no [3], seleciona-se o arquivo [database/dbrdvmedecins.sql];</span></li>
+<li><span style="color: #000000">em [4], execute-o;</span></li>
+<li><span style="color: #000000">em [5], o banco de dados é criado.</span></li>
+</ul>
+<p><span id="refheading569771429907001" name="refheading569771429907001" class="odt-bookmark-anchor"></span></p>
+<h3 id="132-implementacao-do-servidor-web-json">1.3.2. <span style="color: #4f81bd">Implementação do servidor web / JSON</span></h3>
+<p><span style="color: #000000">Com o Spring Tool Suite (STS), importam-se os dois projetos Maven do servidor Spring 4:</span></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000007830000033FAE3B8968.png" width="680" height="294" style="display:inline-block; margin:4px;width:17.999cm;height:7.777cm;" class="odt-zoomable" data-zoom-src="images/10000000000007830000033FAE3B8968.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">em [1] e [2], importamos os projetos Maven;</span></li>
+<li><span style="color: #000000">no [3], indicamos a pasta pai dos dois projetos a serem importados;</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000007B4000002F75DD11407.png" width="680" height="262" style="display:inline-block; margin:4px;width:17.999cm;height:6.927cm;" class="odt-zoomable" data-zoom-src="images/10000000000007B4000002F75DD11407.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">no [3], os projetos importados. É possível que os projetos apresentem erros. É necessário que cada um deles utilize um compilador &gt;=1.7:</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002970000009EFA7963FB.png" width="464" height="111" style="display:inline-block; margin:4px;width:12.28cm;height:2.93cm;" class="odt-zoomable" data-zoom-src="images/10000000000002970000009EFA7963FB.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p><span style="color: #000000">Portanto, é necessário um JVM com versão &gt;=1.7:</span></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000001D40000007A0EDB48C5.png" width="328" height="85" style="display:inline-block; margin:4px;width:8.67cm;height:2.26cm;" class="odt-zoomable" data-zoom-src="images/10000000000001D40000007A0EDB48C5.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p><span style="color: #000000">Quando não houver mais erros no JVM, será possível executar o projeto [rdvmedecins-webapi-v3]:</span></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000007250000031CA4FC341D.png" width="680" height="296" style="display:inline-block; margin:4px;width:17.999cm;height:7.832cm;" class="odt-zoomable" data-zoom-src="images/10000000000007250000031CA4FC341D.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">no [4], [5] e [6], executamos o projeto [rdvmedecins-webapi-v3] como um aplicativo </span><a href="http://projects.spring.io/spring-boot/"><u><span style="color: #0563c1">Spring Boot</span></u></a><span style="color: #000000">;</span></li>
+</ul>
+<p><span style="color: #000000">Assim, obtemos os seguintes logs no console do STS:</span></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="o">.</span>   <span class="n">____</span>          <span class="n">_</span>            <span class="n">__</span> <span class="n">_</span> <span class="n">_</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a> <span class="o">/</span>\\ <span class="o">/</span> <span class="n">___</span><span class="s1">&#39;_ __ _ _(_)_ __  __ _ \ \ \ </span><span class="se">\</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="s1">( ( )\___ | &#39;</span><span class="n">_</span> <span class="o">|</span> <span class="s1">&#39;_| | &#39;</span><span class="n">_</span> \<span class="o">/</span> <span class="n">_</span><span class="err">`</span> <span class="o">|</span> \ \ \ \
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a> \\<span class="o">/</span>  <span class="n">___</span><span class="p">)</span><span class="o">|</span> <span class="o">|</span><span class="n">_</span><span class="p">)</span><span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">||</span> <span class="p">(</span><span class="n">_</span><span class="o">|</span> <span class="o">|</span>  <span class="p">)</span> <span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>  <span class="s1">&#39;  |____| .__|_| |_|_| |_\__, | / / / /</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a> <span class="o">=========|</span><span class="n">_</span><span class="o">|==============|</span><span class="n">___</span><span class="o">/=/</span><span class="n">_</span><span class="o">/</span><span class="n">_</span><span class="o">/</span><span class="n">_</span><span class="o">/</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a> <span class="p">::</span> <span class="n">Spring</span> <span class="n">Boot</span> <span class="p">::</span>        <span class="p">(</span><span class="n">v1</span><span class="mf">.0.0</span><span class="o">.</span><span class="n">RELEASE</span><span class="p">)</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="mi">2014</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">05</span> <span class="mi">12</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mf">34.049</span>  <span class="n">INFO</span> <span class="mi">9296</span> <span class="o">---</span> <span class="p">[</span>           <span class="n">main</span><span class="p">]</span> <span class="n">rdvmedecins</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">boot</span><span class="o">.</span><span class="n">Boot</span>                <span class="p">:</span> <span class="n">Starting</span> <span class="n">Boot</span> <span class="n">on</span> <span class="n">Gportpers3</span> <span class="k">with</span> <span class="n">PID</span> <span class="mi">9296</span> <span class="p">(</span><span class="n">D</span><span class="p">:</span>\<span class="n">data</span>\<span class="n">istia</span><span class="o">-</span><span class="mi">1314</span>\<span class="n">polys</span>\<span class="n">istia</span>\<span class="n">angularjs</span><span class="o">-</span><span class="n">spring4</span>\<span class="n">rdvmedecins</span><span class="o">-</span><span class="n">webapi</span>\<span class="n">target</span>\<span class="n">classes</span> <span class="n">started</span> <span class="n">by</span> <span class="n">ST</span><span class="p">)</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="mi">2014</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">05</span> <span class="mi">12</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mf">34.122</span>  <span class="n">INFO</span> <span class="mi">9296</span> <span class="o">---</span> <span class="p">[</span>           <span class="n">main</span><span class="p">]</span> <span class="n">ationConfigEmbeddedWebApplicationContext</span> <span class="p">:</span> <span class="n">Refreshing</span> <span class="n">org</span><span class="o">.</span><span class="n">springframework</span><span class="o">.</span><span class="n">boot</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">embedded</span><span class="o">.</span><span class="n">AnnotationConfigEmbeddedWebApplicationContext</span><span class="o">@</span><span class="mi">4</span><span class="n">b4bee22</span><span class="p">:</span> <span class="n">startup</span> <span class="n">date</span> <span class="p">[</span><span class="n">Thu</span> <span class="n">Jun</span> <span class="mi">05</span> <span class="mi">12</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">34</span> <span class="n">CEST</span> <span class="mi">2014</span><span class="p">];</span> <span class="n">root</span> <span class="n">of</span> <span class="n">context</span> <span class="n">hierarchy</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="mi">2014</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">05</span> <span class="mi">12</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mf">35.083</span>  <span class="n">INFO</span> <span class="mi">9296</span> <span class="o">---</span> <span class="p">[</span>           <span class="n">main</span><span class="p">]</span> <span class="n">o</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">DefaultListableBeanFactory</span>     <span class="p">:</span> <span class="n">Overriding</span> <span class="n">bean</span> <span class="n">definition</span> <span class="k">for</span> <span class="n">bean</span> <span class="s1">&#39;org.springframework.boot.autoconfigure.AutoConfigurationPackages&#39;</span><span class="p">:</span> <span class="n">replacing</span> <span class="p">[</span><span class="n">Generic</span> <span class="n">bean</span><span class="p">:</span> <span class="k">class</span><span class="w"> </span><span class="err">[</span><span class="nc">org</span><span class="o">.</span><span class="n">springframework</span><span class="o">.</span><span class="n">boot</span><span class="o">.</span><span class="n">autoconfigure</span><span class="o">.</span><span class="n">AutoConfigurationPackages</span><span class="err">$</span><span class="n">BasePackages</span><span class="p">];</span> <span class="n">scope</span><span class="o">=</span><span class="p">;</span> <span class="n">abstract</span><span class="o">=</span><span class="n">false</span><span class="p">;</span> <span class="n">lazyInit</span><span class="o">=</span><span class="n">false</span><span class="p">;</span> <span class="n">autowireMode</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">dependencyCheck</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">autowireCandidate</span><span class="o">=</span><span class="n">true</span><span class="p">;</span> <span class="n">primary</span><span class="o">=</span><span class="n">false</span><span class="p">;</span> <span class="n">factoryBeanName</span><span class="o">=</span><span class="n">null</span><span class="p">;</span> <span class="n">factoryMethodName</span><span class="o">=</span><span class="n">null</span><span class="p">;</span> <span class="n">initMethodName</span><span class="o">=</span><span class="n">null</span><span class="p">;</span> <span class="n">destroyMethodName</span><span class="o">=</span><span class="n">null</span><span class="p">]</span> <span class="k">with</span> <span class="p">[</span><span class="n">Generic</span> <span class="n">bean</span><span class="p">:</span> <span class="k">class</span><span class="w"> </span><span class="err">[</span><span class="nc">org</span><span class="o">.</span><span class="n">springframework</span><span class="o">.</span><span class="n">boot</span><span class="o">.</span><span class="n">autoconfigure</span><span class="o">.</span><span class="n">AutoConfigurationPackages</span><span class="err">$</span><span class="n">BasePackages</span><span class="p">];</span> <span class="n">scope</span><span class="o">=</span><span class="p">;</span> <span class="n">abstract</span><span class="o">=</span><span class="n">false</span><span class="p">;</span> <span class="n">lazyInit</span><span class="o">=</span><span class="n">false</span><span class="p">;</span> <span class="n">autowireMode</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">dependencyCheck</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">autowireCandidate</span><span class="o">=</span><span class="n">true</span><span class="p">;</span> <span class="n">primary</span><span class="o">=</span><span class="n">false</span><span class="p">;</span> <span class="n">factoryBeanName</span><span class="o">=</span><span class="n">null</span><span class="p">;</span> <span class="n">factoryMethodName</span><span class="o">=</span><span class="n">null</span><span class="p">;</span> <span class="n">initMethodName</span><span class="o">=</span><span class="n">null</span><span class="p">;</span> <span class="n">destroyMethodName</span><span class="o">=</span><span class="n">null</span><span class="p">]</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="o">...</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a> <span class="n">s</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">e</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">TomcatEmbeddedServletContainer</span> <span class="p">:</span> <span class="n">Tomcat</span> <span class="n">started</span> <span class="n">on</span> <span class="n">port</span><span class="p">(</span><span class="n">s</span><span class="p">):</span> <span class="mi">8080</span><span class="o">/</span><span class="n">http</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="mi">2014</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">05</span> <span class="mi">12</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mf">41.630</span>  <span class="n">INFO</span> <span class="mi">9296</span> <span class="o">---</span> <span class="p">[</span>           <span class="n">main</span><span class="p">]</span> <span class="n">rdvmedecins</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">boot</span><span class="o">.</span><span class="n">Boot</span> <span class="p">:</span> <span class="n">Started</span> <span class="n">Boot</span> <span class="ow">in</span> <span class="mf">8.0</span> <span class="n">seconds</span> <span class="p">(</span><span class="n">JVM</span> <span class="n">running</span> <span class="k">for</span> <span class="mf">8.944</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><span style="color: #000000">linhas 13-14: a aplicação foi iniciada em um servidor Tomcat.</span></li>
+</ul>
+<p><span id="refheading1590371672552291" name="refheading1590371672552291" class="odt-bookmark-anchor"></span></p>
+<h3 id="133-implementacao-do-cliente-angular">1.3.3. <span style="color: #4f81bd">Implementação do cliente Angular</span></h3>
+<p><span style="color: #000000">Abrimos a pasta [rdvmedecins-angular-v2] com o WebStorm:</span></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000006E9000002A1694871D6.png" width="680" height="259" style="display:inline-block; margin:4px;width:17.999cm;height:6.847cm;" class="odt-zoomable" data-zoom-src="images/10000000000006E9000002A1694871D6.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">no [1], selecionamos a opção [Open Directory];</span></li>
+<li><span style="color: #000000">no [2], selecionamos a pasta [rdvmedecins-angular-v2];</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005C6000003E6AE578CB9.png" width="680" height="459" style="display:inline-block; margin:4px;width:17.999cm;height:12.153cm;" class="odt-zoomable" data-zoom-src="images/10000000000005C6000003E6AE578CB9.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">em [3], a árvore de pastas;</span></li>
+<li><span style="color: #000000">em [4], seleciona-se a página principal [app.html] do aplicativo;</span></li>
+<li><span style="color: #000000">em [5], abre-se em um navegador recente;</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000007DF0000046C0B82B3CD.png" width="680" height="382" style="display:inline-block; margin:4px;width:17.999cm;height:10.111cm;" class="odt-zoomable" data-zoom-src="images/10000000000007DF0000046C0B82B3CD.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">em [6], a página inicial do aplicativo. Trata-se de um aplicativo para agendamento de consultas médicas. Esse aplicativo já foi abordado no documento </span><a href="http://tahe.developpez.com/java/primefaces/"><u><span style="color: #0563c1">Introdução aos frameworks JSF2, Primefaces e Primefaces Mobile</span></u></a><span style="color: #000000">;</span></li>
+<li><span style="color: #000000">em [7], uma caixa de seleção que permite ativar ou desativar o modo [debug]. Este último é caracterizado pela presença do quadro [8], que exibe o modelo da visualização atual;</span></li>
+<li><span style="color: #000000">em [9], um tempo de espera artificial em milissegundos. Seu valor padrão é 0 (sem espera). Se N for o valor desse tempo de espera, qualquer ação do usuário será executada após um tempo de espera de N milissegundos. Isso permite observar o gerenciamento da espera implementado pela aplicação;</span></li>
+<li><span style="color: #000000">em [10], o URL do servidor Spring 4. Seguindo o que foi explicado anteriormente, trata-se do [http://localhost:8080];</span></li>
+<li><span style="color: #000000">em [11] e [12], o identificador e a senha de quem deseja utilizar a aplicação. Há dois usuários: </span><strong>admin/admin</strong> <span style="color: #000000">(login/senha) com uma função (ADMIN) e </span><strong>user/user</strong> <span style="color: #000000">com uma função (USER). Apenas a função ADMIN tem permissão para usar o aplicativo. A função USER está presente apenas para mostrar a resposta do servidor nesse caso de uso;</span></li>
+<li><span style="color: #000000">em [13], o botão que permite conectar-se ao servidor;</span></li>
+<li><span style="color: #000000">em [14], o idioma do aplicativo. Há dois: o francês, por padrão, e o inglês.</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003F1000000CD42CB2AB2.png" width="505" height="103" style="display:inline-block; margin:4px;width:13.349cm;height:2.713cm;" class="odt-zoomable" data-zoom-src="images/10000000000003F1000000CD42CB2AB2.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">em [1], realiza-se a conexão;</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003EF0000047D121B03AF.png" width="504" height="575" style="display:inline-block; margin:4px;width:13.323cm;height:15.201cm;" class="odt-zoomable" data-zoom-src="images/10000000000003EF0000047D121B03AF.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">Depois de fazer login, é possível escolher o médico com quem deseja marcar uma consulta [2] e o dia da consulta [3];</span></li>
+<li><span style="color: #000000">solicita-se, em [4], a visualização da agenda do médico escolhido para o dia selecionado;</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000039F000003E89CBA1112.png" width="464" height="500" style="display:inline-block; margin:4px;width:12.264cm;height:13.229cm;" class="odt-zoomable" data-zoom-src="images/100000000000039F000003E89CBA1112.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">assim que a agenda do médico for exibida, é possível agendar um horário [5];</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000046D00000344CC2465C5.png" width="567" height="418" style="display:inline-block; margin:4px;width:14.99cm;height:11.06cm;" class="odt-zoomable" data-zoom-src="images/100000000000046D00000344CC2465C5.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">em [6], seleciona-se o paciente para a consulta e confirma-se essa escolha em [7];</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000432000003EF376EAFAF.png" width="537" height="504" style="display:inline-block; margin:4px;width:14.208cm;height:13.323cm;" class="odt-zoomable" data-zoom-src="images/1000000000000432000003EF376EAFAF.png" /></td></tr></table>
+
+<p><span style="color: #000000">Assim que a consulta for confirmada, o usuário é redirecionado automaticamente para a agenda, onde a nova consulta já está registrada. Essa consulta poderá ser excluída posteriormente com o código [7].</span></p>
+<p><span style="color: #000000">As principais funcionalidades já foram descritas. Elas são simples. As que não foram descritas são funções de navegação para retornar a uma visualização anterior. Concluímos com o gerenciamento do idioma:</span></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005BA000003B62BAA3BC6.png" width="680" height="441" style="display:inline-block; margin:4px;width:17.999cm;height:11.663cm;" class="odt-zoomable" data-zoom-src="images/10000000000005BA000003B62BAA3BC6.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">em [1], alterna-se do francês para o inglês;</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000058E000003B4AAC56BD7.png" width="680" height="453" style="display:inline-block; margin:4px;width:17.999cm;height:11.998cm;" class="odt-zoomable" data-zoom-src="images/100000000000058E000003B4AAC56BD7.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">para [2], a visualização passa para o inglês, incluindo o calendário;</span></li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Este tutorial, escrito por <strong>Serge Tahé</strong>, é disponibilizado ao público sob os termos da
+        <em>Creative Commons Atribuição – Sem uso comercial –
+        Compartilhamento igualitário 3.0 inalterado</em>.
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
